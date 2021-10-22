@@ -1,29 +1,39 @@
 # Road Rage
 
-Road Rage is a return to the days of grunge.
+RoadRage is a return to the days of grunge. This traditional, bold sans has a textured edge with tension in the way the forms deviate from the standard upright. Use Road Rage to punch your way into making a bold statement.
 
 ![Sample Image](Documentation/image1.png)
 
-## Building
+## Building the Fonts
 
-Fonts are built automatically by GitHub Actions - take a look in the "Actions" tab for the latest build.
+The font is built using fontmake and gftools post processing script. Tools are all python based, so it must be previously installed.
 
-If you particularly want to build fonts manually on your own computer, you will need to install the [`yq` utility](https://github.com/mikefarah/yq). On OS X with Homebrew, type `brew install yq`; on Linux, try `snap install yq`; if all else fails, try the instructions on the linked page.
+To install all the Python tools into a virtualenv, do the following:
 
-Then:
+From terminal:
 
-* `make build` will produce font files.
-* `make test` will run [FontBakery](https://github.com/googlefonts/fontbakery)'s quality assurance tests.
-* `make proof` will generate HTML proof files.
+```
 
-The proof files and QA tests are also available automatically via GitHub Actions - look at `https://yourname.github.io/your-font-repository-name`.
+cd your/local/project/directory
 
-## License
+#once in the project folder create a virtual environment. 
+This step has to be done just once, the first time:
 
-This Font Software is licensed under the SIL Open Font License, Version 1.1.
-This license is copied below, and is also available with a FAQ at
-http://scripts.sil.org/OFL
+python3 -m venv venv
 
-## Repository Layout
+#activate the virtual environment
 
-This font repository structure is inspired by [Unified Font Repository v0.3](https://github.com/unified-font-repository/Unified-Font-Repository), modified for the Google Fonts workflow.
+source venv/bin/activate
+
+#install the required dependencies
+
+pip install -r requirements.txt
+
+```
+
+Then run the this command:
+
+```
+cd sources
+gftools builder config.yml
+```
